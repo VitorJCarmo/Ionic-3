@@ -1,0 +1,30 @@
+<ion-header>
+        <ion-navbar>
+          <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+          <ion-title>Cadastrar Consulta</ion-title>
+        </ion-navbar>
+      </ion-header>
+      
+      <ion-content>
+            <ion-item>
+                <ion-label>Data Consulta</ion-label>
+                <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="dataConsulta"></ion-datetime>
+            </ion-item>
+            <ion-item>
+                    <ion-label>Horario Consulta</ion-label>
+                    <ion-datetime displayFormat="HH:mm A" [(ngModel)]="horaConsulta"></ion-datetime>
+                </ion-item>
+                <button (click)="presentActionSheet()" ion-button>Selecionar Paciente</button>
+                <p>Paciente Selecionado: {{selectedPacienteNome}}</p>
+                <ion-list *ngIf="selecPac">
+                    <ion-icon id="close" (click)="closelist()" name="ios-close-circle"></ion-icon>
+                        <button (click)="selectedP(p)" ion-item *ngFor="let p of pacientes">
+                          {{p.nome}}
+                        </button>
+                        <div class="item-note" item-end>
+                          </div>
+                      </ion-list>
+                      <button (click)="conRequest()" [disabled]="!dataConsulta || !horaConsulta || !selectedPaciente" ion-button>Cadastrar Consulta</button>
+        </ion-content>

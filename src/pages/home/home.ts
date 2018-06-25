@@ -52,7 +52,7 @@ this.getAll()
           }
         }
         if(this.logar == true){
-        this.navCtrl.push(LoginPage,this.key);
+        this.navCtrl.push(MainPage,this.key);
       }
       else{
         this.toast.create({ message: 'Dados Invalidos.', duration: 3000, position: 'botton' }).present();

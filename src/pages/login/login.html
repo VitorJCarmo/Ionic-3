@@ -1,18 +1,22 @@
 
 <ion-header>
-
   <ion-navbar>
-    <ion-title>login</ion-title>
+    <ion-title>Lista Pacientes</ion-title>
   </ion-navbar>
-
 </ion-header>
 
+<h3>Lista de pacientes</h3>
 
-<ion-content padding>
-<p *ngFor="let user of data">
-  {{user.pacientes.nome}}
-  {{user.pacientes.email}}
-  {{user.pacientes.telefone}}
-  {{user.pacientes.sexo}}
-</p>
+<ion-content>
+    <ion-grid>
+        <ion-row><ion-col col-6><button (click)="cadastrarpaciente()" ion-button outline>  <ion-icon ios="ios-person-add" md="md-person-add"></ion-icon>  Cadastrar paciente</button></ion-col> </ion-row>
+     </ion-grid>
+  <ion-list>
+    <button (click)="editarPaciente(p.id)" ion-item *ngFor="let p of pacientes">
+      {{p.nome}}
+    </button>
+    <div class="item-note" item-end>
+      </div>
+  </ion-list>
 </ion-content>
+

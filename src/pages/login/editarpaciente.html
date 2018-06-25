@@ -1,0 +1,45 @@
+<ion-header>
+        <ion-navbar>
+          <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+          <ion-title>Cadastrar Paciente</ion-title>
+        </ion-navbar>
+      </ion-header>
+      
+      <ion-content>
+          <ion-item>
+              <ion-label floating>Nome</ion-label>
+              <ion-input [(ngModel)]="nomePaciente" type="text"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label floating>Telefone</ion-label>
+              <ion-input [(ngModel)]="telPaciente" type="number"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Observação</ion-label>
+                <ion-input [(ngModel)]="obsPaciente" type="text"></ion-input>
+              </ion-item>
+            <ion-item>
+                <ion-label floating>Email</ion-label>
+                <ion-input [(ngModel)]="emailPaciente" type="email"></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-label>Data Nascimento</ion-label>
+                  <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="dataNascimento"></ion-datetime>
+              </ion-item>
+              <ion-list>
+                  <ion-item>
+                    <ion-label>Sexo</ion-label>
+                    <ion-select [(ngModel)]="sexoPaciente">
+                      <ion-option value="Masculino">Masculino</ion-option>
+                      <ion-option value="Feminino">Feminino</ion-option>
+                    </ion-select>
+                  </ion-item>
+                </ion-list>
+                <ion-item>
+                    <ion-label>Paciente desde</ion-label>
+                    <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="dataCadastro"></ion-datetime>
+                </ion-item>
+            <button (click)="pacRequest()" [disabled]="!nomePaciente || !emailPaciente || !dataNascimento || !dataCadastro" ion-button>Editar Paciente</button>
+        </ion-content>

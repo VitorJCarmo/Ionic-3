@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { MainProvider } from '../../providers/main/main';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import {LoginPage} from '../login/login';
+import {ListPage} from '../list/list';
+
 
 @IonicPage()
 @Component({
@@ -8,21 +10,14 @@ import { MainProvider } from '../../providers/main/main';
   templateUrl: 'main.html',
 })
 export class MainPage {
+  mainRoot = MainPage;
+  listaRoot = ListPage;
+  loginRoot = LoginPage;
 
   data:any;
 
-  constructor(public navCtrl: NavController, 
-    public navParams: NavParams,
-    public main: MainProvider 
-    ) {
-  this.getData();
-  console.log(this.data);
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams, private toast:ToastController) {
+    this.toast.create({ message: 'Seja Bem Vindo!', duration: 3000, position: 'botton' }).present();
+ }
 
-  getData(){
-    this.main.getData()
-    .then(data => {
-      this.data = data;
-    });
-}
 }

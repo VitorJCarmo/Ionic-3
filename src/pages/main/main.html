@@ -7,11 +7,16 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>main</ion-title>
+    <ion-title>Secretária Virtual</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-</ion-content>
+
+  
+<ion-tabs>
+  <ion-tab [root]="listaRoot" tabTitle="Consultas" tabIcon="ios-people"></ion-tab>
+  <ion-tab [root]="loginRoot" tabTitle="Pacientes" tabIcon="ios-person"></ion-tab>
+ </ion-tabs>
+

@@ -10,6 +10,9 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { MainPage } from '../pages/main/main';
 import { LoginPage } from '../pages/login/login';
+import { CadastroConPage } from '../pages/list/cadastroconsulta';
+import { CadastroPacPage } from '../pages/login/cadastropaciente';
+import { EditarPacPage } from '../pages/login/editarpaciente';
 import { RegisterComponent } from '../components/register/register';
 
 import { IonicStorageModule } from '@ionic/storage';
@@ -18,6 +21,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { DatabaseProvider } from '../providers/database/database';
 import { MainProvider } from '../providers/main/main';
 
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -25,7 +30,10 @@ import { MainProvider } from '../providers/main/main';
     ListPage,
     MainPage,
     RegisterComponent,
-    LoginPage
+    LoginPage,
+    CadastroConPage,
+    CadastroPacPage,
+    EditarPacPage
   ],
   imports: [
     BrowserModule,
@@ -41,7 +49,10 @@ import { MainProvider } from '../providers/main/main';
     ListPage,
     MainPage,
     RegisterComponent,
-    LoginPage
+    LoginPage,
+    CadastroConPage,
+    CadastroPacPage,
+    EditarPacPage
   ],
   providers: [
     StatusBar,

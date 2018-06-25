@@ -1,6 +1,7 @@
-import { Http } from '@angular/http';
+import { Http,Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
 
@@ -8,10 +9,10 @@ import 'rxjs/add/operator/map';
 
 export class DatabaseProvider {
 
- apiUrl:string = 'http://secretariavirtual.herokuapp.com/api/';
+ apiUrl:string = 'http://secretariavirtual.herokuapp.com/api';
  data:any;
 
-  constructor(private storage: Storage, public http:Http) { }
+  constructor(private storage: Storage, public http:Http,public httpc:HttpClient) { }
 
   public insert(usuario: Usuario) {
     let key = usuario.email;
@@ -49,32 +50,46 @@ export class DatabaseProvider {
   }
 
   //API REQUEST
-  // getData(){
-  //   var headers = new Headers();
-  //   headers.append('Accept', 'application/json ');
-  //   this.http.get('http://secretariavirtual.herokuapp.com/api/pacientes',{"Headers": headers})
-  //   .subscribe (data => {
-  //     this.data = data;
-  //   }
-  // }
-  //
 
-  getAll(){
-    if (this.data) {
-      return Promise.resolve(this.data);
-}
-    return new Promise(resolve => {
+  // Gets
+  getPac(){
+    return this.httpc.get(`${this.apiUrl}/pacientes`);
+  }
+  getCon(){
+    return this.httpc.get(`${this.apiUrl}/consultas`);
+  }  
+  getPacbyID(id){
+    return this.httpc.get(`${this.apiUrl}/pacientes/${id}`);
+  }
+  getConbyID(id){
+    return this.httpc.get(`${this.apiUrl}/consultas/${id}`);
+  }
+  
+  //Posts
+  postCon(con){
+    this.httpc.post(`${this.apiUrl}/consultas`, con).subscribe((res) => {
+    return res;
+  })
+  }
+  postPac(pac){
+    this.httpc.post(`${this.apiUrl}/pacientes`, pac).subscribe((res) => {
+      return res;
+    })
+  }
 
-      this.http.get(this.apiUrl+'pacientes')
-        .map(res => res.json())
-        .subscribe(data => {
-          this.data = data;
-        });
-    });
+  //Puts
+  putPac(pac){
+    this.httpc.put(`${this.apiUrl}/pacientes`, pac).subscribe((res) => {
+      return res;
+    })
+  }
+  putCon(con){
+    this.httpc.put(`${this.apiUrl}/consultas`, con).subscribe((res) => {
+      return res;
+    })
   }
 
 }
-
 
 export class Usuario {
   name: string;
